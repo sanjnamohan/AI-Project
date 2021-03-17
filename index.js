@@ -104,4 +104,3 @@ function createGraph() {
 window.addEventListener("load", ()=>{
 	createGraph();
 })
-
