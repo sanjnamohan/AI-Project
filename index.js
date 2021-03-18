@@ -123,6 +123,10 @@ function toggle_add() {
 
 
     }
+		else {
+			node_add.style.display = 'none';
+			edge_add.style.display = 'none';
+		}
 }
 
 function toggle_delete() {
@@ -146,6 +150,10 @@ function toggle_delete() {
 
 
     }
+		else {
+			node_delete.style.display = 'none';
+			edge_delete.style.display = 'none';
+		}
 }
 
 function toggle_update() {
@@ -169,6 +177,23 @@ function toggle_update() {
 
 
     }
+		else {
+			weight_update.style.display = 'none';
+			hv_update.style.display = 'none';
+		}
+}
+
+function node_details() {
+	var node_det =  document.getElementById('Algorithm');
+	var algo_value = node_det.options[node_det.selectedIndex].value;
+	var path_det = document.getElementById('path_details');
+	if (algo_value != "nothing") {
+	path_det.style.display = 'block';
+}
+	else {
+		path_det.style.display = 'none';
+	}
+
 }
 
 

@@ -9,7 +9,7 @@
       width: 50%;
       position: fixed;
       z-index: 1;
-      top: 0;
+      top: 50;
       overflow-x: hidden;
       padding-top: 20px;
 }

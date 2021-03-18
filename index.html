@@ -3,21 +3,37 @@
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <link rel="stylesheet" href="main.css"></style>
     <style>
+        body {
+          background-color: white;
+
+        }
+        input {
+          border: 2px solid gray;
+          color: black;
+          padding: 8px 16px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+        }
         .button {
-        border: none;
-        color: white;
+        border: 2px solid #008CBA;
+        color: black;
         padding: 8px 16px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
+        font-size: 15px;
         margin: 4px 2px;
         transition-duration: 0.4s;
         cursor: pointer;
 }
        .button1 {
-        background-color: white;
-        color: black;
+        background-color: #008CBA;
+        color: white;
         border: 2px solid #008CBA;
         }
 
@@ -28,25 +44,40 @@
     </style>
 </head>
 <body>
+<h1 style="text-align:center;color: #008CBA;">Visualization of Search Techniques</h1>
+<br><br>
 <div id="Buttons" class = "right_buttons">
 
-<label for="Add" style="font-size:20px">Add:</label>
-<select name="Add" id="Add" style="font-size:15px" onchange="toggle_add();">
-<option value="edge">Edge</option>
-<option value="node">Node</option>
+<!-- <label for="Add" style="font-size:20px">Add:</label> -->
+<!-- <i class="fa fa-plus"></i> -->
+<select name="Add" id="Add" class = "button" onchange="toggle_add();">
+<option value="nothing" selected>Add</option>
+<option value="edge">Add Edge</option>
+<option value="node">Add Node</option>
 </select>
-<br><br>
-<label for="Delete" style="font-size:20px">Delete:</label>
-<select name="Delete" id="Delete" style="font-size:15px" onchange="toggle_delete();">
-<option value="edge">Edge</option>
-<option value="node">Node</option>
+<!-- <br><br> -->
+<!-- <label for="Delete" style="font-size:20px">Delete:</label> -->
+<select name="Delete" id="Delete" class="button" onchange="toggle_delete();">
+<option value="nothing" selected>Delete</option>
+<option value="edge">Delete Edge</option>
+<option value="node">Delete Node</option>
 </select>
-<br><br>
-<label for="Update" style="font-size:20px">Update:</label>
-<select name="Update" id="Update" style="font-size:15px" onchange="toggle_update();">
-<option value="weights">Weights</option>
-<option value="heuristic_value">Heuristic Value</option>
+<!-- <br><br> -->
+<!-- <label for="Update" style="font-size:20px">Update:</label> -->
+<select name="Update" id="Update" class="button" onchange="toggle_update();">
+<option value="nothing" selected>Update</option>
+<option value="weights">Update Weights</option>
+<option value="heuristic_value">Update Heuristic Value</option>
 </select>
+<!-- <br><br> -->
+<!-- <label for="Algorithm" style="font-size:20px">Algorithm:</label> -->
+<select name="Algorithm" id="Algorithm" class="button" onchange="node_details();">
+<option value="nothing" selected>Select Algorithm</option>
+<option value="A-Star">A<sup>*</sup></option>
+<option value="BFS">Breadth First Search</option>
+<option value="DFS">Depth First Search</option>
+</select>
+
 
 <div id="add_node" style="display:none">
 <h2>Add Node:</h2>
@@ -55,11 +86,7 @@
 <button class="button button1" onclick="addNode();">Add </button>
 </div>
 
-<div id="delete_node" style="display:none">
-<h2>Delete Node:</h2>
-<input id="node-delete" type="text"placeholder="Node to Delete">
-<button class="button button1" onclick="delNode();">Delete </button>
-</div>
+
 
 <div id="add_edge" style="display:none">
 <h2>Add Edge:</h2>
@@ -67,6 +94,12 @@
 <input id="node-to" type="text" placeholder="To Node">
 <input id="weight" type="integer" placeholder="Weight">
 <button class="button button1" onclick="addEdge();">Add </button>
+</div>
+
+<div id="delete_node" style="display:none">
+<h2>Delete Node:</h2>
+<input id="node-delete" type="text"placeholder="Node to Delete">
+<button class="button button1" onclick="delNode();">Delete </button>
 </div>
 
 <div id="delete_edge" style="display:none">
@@ -90,6 +123,16 @@
 <input id="heuristic1" type="text" placeholder="New Heuristic Value">
 <button class="button button1" onclick="UpdH();">Update</button>
 </div>
+
+<!-- <br><br><br> -->
+
+<div id="path_details" style="display:none">
+<h2>Enter the Source and Destination Nodes:</h2>
+<input id="start_node" type="text" placeholder="Source Node">
+<input id="end_node" type="text" placeholder="Destination Node">
+<button class="button button1">Confirm</button>
+</div>
+
 
 <script type="text/javascript" src="index.js"></script>
 <div id="graph" class="left_graph"></div>
